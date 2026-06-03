@@ -250,8 +250,8 @@ function setupScratch(canvas, isWin) {
                     message.innerText = "effettivamente potevamo fare di meglio...";
                 }
                 audio.pause();
-                audio.currentTime = 0; // torna all'inizio
-                audio.load(); // forza lo stop completo
+                audio.currentTime = 0;
+                audio.load();
                 playWinSound();
                 confetti({
                     particleCount: 220,
