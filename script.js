@@ -123,9 +123,10 @@ function start() {
         displayName = "Balena 🐳";
     }
     age = now - year;
-
+    
+    audio.loop = true;
     audio.play();
-
+    
     winnerIndex = Math.floor(Math.random() * age);
 
     document.getElementById("start").classList.add("hidden");
