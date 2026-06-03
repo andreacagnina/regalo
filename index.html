@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gratta e Vinci 🎁</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <audio id="bgm">
+        <source src="musica.mp3" type="audio/mpeg">
+    </audio>
+    <div id="start" class="screen">
+        <h1>Dimmi chi sei</h1>
+
+        <input id="name" placeholder="Nome">
+        <input id="year" type="number" placeholder="Anno di nascita">
+
+        <button onclick="start()">INIZIA</button>
+
+    </div>
+
+    <div id="game" class="screen hidden">
+
+        <h2>🎈🎈🎈</h2>
+        <h2 id="welcome"></h2>
+        <div id="info"></div>
+
+        <div class="grid" id="grid"></div>
+
+    </div>
+
+    <div id="win" class="modal hidden">
+        <div class="card">
+
+            <h2>🎉 HAI VINTO!</h2>
+            <p>Andrea e Marta<br>hanno un regalo per te</p>
+
+            <button onclick="openGift()">🎁 APRI IL TUO REGALO 🎁</button>
+
+        </div>
+    </div>
+
+    <div id="final" class="modal hidden">
+        <div class="card">
+
+            <h2>🎁 IL TUO REGALO 🎁</h2>
+            <p id="gift-message"></p>
+
+            <button onclick="downloadGift()">📥 SCOPRI DI PIÙ</button>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

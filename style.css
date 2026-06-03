@@ -1,0 +1,119 @@
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f3f3f3;
+        }
+
+        .screen {
+            max-width: 1100px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+        }
+
+        h3 {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        #margin {
+            margin: 8px 6px;
+        }
+
+        input {
+            display: block;
+            width: 100%;
+            max-width: 320px;
+            margin: 10px auto;
+            padding: 12px;
+            font-size: 16px;
+            -webkit-text-size-adjust: 100%;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            display: block;
+            margin: 15px auto;
+            padding: 14px 22px;
+            border: none;
+            border-radius: 12px;
+            background: #d4a017;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        #info {
+            text-align: center;
+            margin: 10px 0 20px;
+        }
+
+        .grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .ticket {
+            position: relative;
+            min-height: 170px;
+            width: 100%;
+            border-radius: 14px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ffe08a, #d4a017);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            touch-action: none;
+        }
+
+        canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            touch-action: none;
+        }
+
+        .ticket-content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
