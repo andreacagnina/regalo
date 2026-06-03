@@ -321,11 +321,9 @@ function downloadGift() {
     const a = document.createElement("a");
     if (/^mauro$/i.test(originalName)) {
         a.href = "https://drive.google.com/file/d/1c6U8blfeY7tFEO650chpx9RCd8J_QSII/view?usp=drive_link";
-        a.download = "Gift_Card_Decathlon.pdf";
     }
     else if (/^aurora$/i.test(originalName)) {
         a.href = "https://drive.google.com/file/d/1DTZK09uHOiPOZbHHpe80dZLdovEOWmtV/view?usp=drive_link";
-        a.download = "Notre_Dame_de_Paris_24/08/26.pdf";
     } else {
         a.href = "https://youtu.be/sqkzN2Ye_pk?si=zleMu3A7XRf6pYuL";
     }
