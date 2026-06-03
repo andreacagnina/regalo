@@ -324,9 +324,10 @@ function downloadGift() {
         a.href = "https://drive.google.com/file/d/1c6U8blfeY7tFEO650chpx9RCd8J_QSII/view?usp=drive_link";
     }
     else if (/^aurora$/i.test(originalName)) {
-        a.href = "https://drive.google.com/file/d/1DTZK09uHOiPOZbHHpe80dZLdovEOWmtV/view?usp=drive_link";
+        a.href = "nddp.pdf";
+        a.download = "nddp.pdf";
     } else {
-        a.href = "https://youtu.be/sqkzN2Ye_pk?si=zleMu3A7XRf6pYuL";
+        a.href = "httpst://youtu.be/sqkzN2Ye_pk?si=zleMu3A7XRf6pYuL";
     }
     a.click();
 }
