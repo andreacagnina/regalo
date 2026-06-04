@@ -321,7 +321,8 @@ function openGift() {
 function downloadGift() {
     const a = document.createElement("a");
     if (/^mauro$/i.test(originalName)) {
-        a.href = "https://drive.google.com/file/d/1c6U8blfeY7tFEO650chpx9RCd8J_QSII/view?usp=drive_link";
+       a.href = "gift-card.pdf";
+       a.download = "nddp.pdf";
     }
     else if (/^aurora$/i.test(originalName)) {
         a.href = "nddp.pdf";
