@@ -327,7 +327,7 @@ function downloadGift() {
         a.href = "nddp.pdf";
         a.download = "nddp.pdf";
     } else {
-        a.href = "httpst://youtu.be/sqkzN2Ye_pk?si=zleMu3A7XRf6pYuL";
+        a.href = "https://youtu.be/sqkzN2Ye_pk";
     }
     a.click();
 }
