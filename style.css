@@ -6,7 +6,7 @@
 
         .screen {
             max-width: 1100px;
-            margin: auto 20px auto auto;
+            margin: auto;
             padding: 20px;
         }
 
@@ -66,7 +66,7 @@
         .grid {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 12px 20px 12px 12px;
         }
 
         .ticket {
