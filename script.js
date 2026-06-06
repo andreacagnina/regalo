@@ -127,8 +127,8 @@ function start() {
         return;
     }
 
-    if (isNaN(birthDate.getTime()) || birthDate < minDate || birthDate > maxDate) {
-        alert("Data non valida: devi avere almeno 1 anno e non essere nato prima del 1950");
+    if (isNaN(birthDate.getTime())) {
+        alert("Data non valida");
         return;
     }
     else if (birthDate < minDate) {

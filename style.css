@@ -30,6 +30,10 @@
             margin: 8px 6px;
         }
 
+        label{
+            margin-left: 6px;
+        }
+
         input {
             display: block;
             width: 100%;
