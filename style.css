@@ -78,6 +78,8 @@
             background: linear-gradient(135deg, #ffe08a, #d4a017);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
             touch-action: none;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
         }
 
         canvas {
@@ -86,11 +88,17 @@
             width: 100%;
             height: 100%;
             touch-action: none;
+            z-index: 2;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            will-change: transform, opacity;
         }
 
         .ticket-content {
             position: absolute;
             inset: 0;
+            z-index: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;

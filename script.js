@@ -3,7 +3,7 @@ const messages = [
     "quasi ma no",
     "aria fritta",
     "oggi fortuna off?",
-    "caffè immaginario",
+    "hai vinto un caffè immaginario",
     "molto quasi",
     "niente",
     "magari il prossimo",
@@ -33,12 +33,23 @@ const messages = [
     "un po’ di suspense",
     "non c'è nessun premio",
     "forse quando nevicherà",
-    "se continua così, pesta una merda",
+    "se continui così, vai a pestare una merda",
     "non ci siamo",
     "era scritto nelle stelle",
     "ci hai messo cuore",
     "peccato, riprova"
 ];
+
+document.addEventListener('DOMContentLoaded', () => {
+    const yearInput = document.getElementById('year');
+    if (yearInput) {
+        const today = new Date();
+        const maxDate = new Date(today);
+        maxDate.setFullYear(maxDate.getFullYear() - 1); // richiede almeno 1 anno
+        yearInput.max = maxDate.toISOString().split('T')[0];
+        yearInput.min = '1950-01-01';
+    }
+});
 
 let winnerIndex = 0;
 let age = 0;
@@ -104,15 +115,28 @@ function start() {
     originalName = document.getElementById("name").value.trim();
     displayName = originalName;
 
-    const year = parseInt(document.getElementById("year").value);
-    const now = new Date().getFullYear();
+    const yearValue = document.getElementById("year").value;
+    const birthDate = new Date(yearValue);
+    const today = new Date();
+    const minDate = new Date('1950-01-01');
+    const maxDate = new Date(today);
+    maxDate.setFullYear(maxDate.getFullYear() - 1); // almeno 1 anno
 
-    if (!displayName || !year) {
+    if (!displayName || !yearValue) {
         alert("Inserisci dati richiesti");
         return;
     }
-    if (year > now || year < 1950) {
-        alert("Anno non valido");
+
+    if (isNaN(birthDate.getTime()) || birthDate < minDate || birthDate > maxDate) {
+        alert("Data non valida: devi avere almeno 1 anno e non essere nato prima del 1950");
+        return;
+    }
+    else if (birthDate < minDate) {
+        alert("Data non valida: devi avere almeno 1 anno");
+        return;
+    }
+    else if (birthDate > maxDate) {
+        alert("Data non valida: non posso darti così tanti gratta e vinci");
         return;
     }
 
@@ -122,11 +146,18 @@ function start() {
     else if (/^aurora$/i.test(originalName)) {
         displayName = "Balena 🐳";
     }
-    age = now - year;
-    
+
+    // calcola età precisa in anni
+    let calcAge = today.getFullYear() - birthDate.getFullYear();
+    const m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        calcAge--;
+    }
+    age = calcAge;
+
     audio.loop = true;
     audio.play();
-    
+
     winnerIndex = Math.floor(Math.random() * age);
 
     document.getElementById("start").classList.add("hidden");
@@ -243,11 +274,11 @@ function setupScratch(canvas, isWin) {
                 const message = document.getElementById("gift-message");
                 if (/^mauro$/i.test(originalName)) {
                     message.innerText = "Una Gift Card da spendere...";
-                }
-                else if (/^aurora$/i.test(originalName)) {
+                } else if (/^aurora$/i.test(originalName)) {
                     message.innerText = "Puoi accompagnare un disabile ♿ a vedere...";
-                }
-                else {
+                } else if (/^antonio$/i.test(originalName)) {
+                    message.innerText = "Speriamo sia un regalo gradito";
+                } else {
                     message.innerText = "effettivamente potevamo fare di meglio...";
                 }
                 audio.pause();
@@ -321,14 +352,22 @@ function openGift() {
 function downloadGift() {
     const a = document.createElement("a");
     if (/^mauro$/i.test(originalName)) {
-       a.href = "gift-card.pdf";
-       a.download = "nddp.pdf";
+        a.href = "mauro-gift.pdf";
+        a.download = "mauro-gift.pdf";
+        a.click();
     }
     else if (/^aurora$/i.test(originalName)) {
         a.href = "nddp.pdf";
         a.download = "nddp.pdf";
-    } else {
-        a.href = "https://youtu.be/sqkzN2Ye_pk";
+        a.click();
     }
-    a.click();
+    else if (/^antonio$/i.test(originalName)) {
+        a.href = "antonio-gift.pdf";
+        a.download = "antonio-gift.pdf";
+        a.click();
+    } else {
+        audio.volume = 1;
+        audio.muted = false;
+        window.open('https://www.youtube.com/watch?v=sqkzN2Ye_pk&autoplay=1', '_blank', 'noopener');
+    }
 }
