@@ -70,13 +70,14 @@
         .grid {
             display: flex;
             flex-direction: column;
+            align-items: center;
             gap: 12px;
         }
 
         .ticket {
             position: relative;
             min-height: 170px;
-            width: 95%;
+            width: 90%;
             border-radius: 14px;
             overflow: hidden;
             background: linear-gradient(135deg, #ffe08a, #d4a017);
