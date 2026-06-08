@@ -123,24 +123,13 @@ function start() {
     maxDate.setFullYear(maxDate.getFullYear() - 1); // almeno 1 anno
 
     const birthDate = new Date(yearValue);
-const today = new Date();
-
-if (!displayName || !yearValue) {
-    alert("Inserisci dati richiesti");
-    return;
-}
-
-if (isNaN(birthDate.getTime())) {
-    alert("Data non valida");
-    return;
-}
 
 // Finestra di utilizzo: compleanno + 14 giorni
-const birthdayThisYear = new Date(
+    const birthdayThisYear = new Date(
     today.getFullYear(),
     birthDate.getMonth(),
     birthDate.getDate()
-);
+   );
 
 const diffDays = Math.floor(
     (today - birthdayThisYear) / (1000 * 60 * 60 * 24)
