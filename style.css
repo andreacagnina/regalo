@@ -31,7 +31,12 @@
         }
 
         label{
-            margin-left: 6px;
+            display: block;
+            width: 100%;
+            max-width: 320px;
+            margin: 10px auto 0px auto;
+            padding: 12px 0px 0px 0px;
+            font-size: 16px;
         }
 
         input {

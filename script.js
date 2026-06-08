@@ -56,7 +56,6 @@ let age = 0;
 const audio = document.getElementById("bgm");
 let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 let originalName = "";
-let displayName = "";
 
 
 function playWinSound() {
@@ -113,12 +112,10 @@ function drawScratchTexture(ctx, w, h) {
 
 function start() {
 
-    originalName = document.getElementById("name").value.trim();
-    displayName = originalName;
-
+    originalName = document.getElementById("name").value.toLowerCase().trim();
     const yearValue = document.getElementById("year").value;
 
-    if (!displayName || !yearValue) {
+    if (!originalName || !yearValue) {
         alert("Inserisci dati richiesti");
         return;
     }
@@ -137,12 +134,12 @@ function start() {
     maxDate.setFullYear(maxDate.getFullYear() - 1);
 
     if (birthDate < minDate) {
-        alert("Data non valida");
+        alert("Troppo vintage per questo 😅");
         return;
     }
 
     if (birthDate > maxDate) {
-        alert("Data non valida: non posso darti così tanti gratta e vinci");
+        alert("Hai viaggiato nel tempo? Inserisci una data valida.");
         return;
     }
 
@@ -158,7 +155,9 @@ function start() {
     );
 
     if (diffDays < 0 || diffDays > 14) {
-        alert("Siamo oltre il limite dei regali 🎁");
+        audio.volume = 1;
+        audio.muted = false;
+        window.open('https://www.youtube.com/watch?v=sqkzN2Ye_pk&autoplay=1', 'noopener');
         return;
     }
 
@@ -184,7 +183,7 @@ function start() {
     document.getElementById("game").classList.remove("hidden");
 
     document.getElementById("welcome").innerText =
-        `Auguri ${capitalize(displayName)}!`;
+        `Auguri ${capitalize(originalName)}!`;
 
     document.getElementById("info").innerHTML =
         `<h4>1 Gratta e Vinci per ogni anno compiuto</h4>
@@ -294,11 +293,8 @@ function setupScratch(canvas, isWin) {
 
             if (isWin) {
                 const message = document.getElementById("gift-message");
-                if (/^antonio$/i.test(originalName)) {
-                    message.innerText = "Speriamo sia un regalo gradito";
-                } else {
-                    message.innerText = "effettivamente potevamo fare di meglio...";
-                }
+                message.innerText = "speriamo sia un regalo gradito";
+
                 audio.pause();
                 audio.currentTime = 0;
                 audio.load();
@@ -369,14 +365,8 @@ function openGift() {
 
 function downloadGift() {
     const a = document.createElement("a");
+    a.href = `regalo-${originalName}.pdf`;
+    a.download = `regalo-${originalName}.pdf`;
+    a.click();
 
-    if (/^antonio$/i.test(originalName)) {
-        a.href = "antonio-gift.pdf";
-        a.download = "antonio-gift.pdf";
-        a.click();
-    } else {
-        audio.volume = 1;
-        audio.muted = false;
-        window.open('https://www.youtube.com/watch?v=sqkzN2Ye_pk&autoplay=1', '_blank', 'noopener');
-    }
 }
