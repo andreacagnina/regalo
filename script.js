@@ -112,54 +112,67 @@ function drawScratchTexture(ctx, w, h) {
 }
 
 function start() {
+
     originalName = document.getElementById("name").value.trim();
     displayName = originalName;
 
     const yearValue = document.getElementById("year").value;
-    const birthDate = new Date(yearValue);
-    const today = new Date();
-    const minDate = new Date('1950-01-01');
-    const maxDate = new Date(today);
-    maxDate.setFullYear(maxDate.getFullYear() - 1); // almeno 1 anno
-// Finestra di utilizzo: compleanno + 14 giorni
-    const birthdayThisYear = new Date(
-    today.getFullYear(),
-    birthDate.getMonth(),
-    birthDate.getDate()
-   );
 
-const diffDays = Math.floor(
-    (today - birthdayThisYear) / (1000 * 60 * 60 * 24)
-);
-
-if (diffDays < 0 || diffDays > 14) {
-    alert("Siamo oltre il limite dei regali 🎁");
-    return;
-}
-    
     if (!displayName || !yearValue) {
         alert("Inserisci dati richiesti");
         return;
     }
 
+    const birthDate = new Date(yearValue);
+
     if (isNaN(birthDate.getTime())) {
         alert("Data non valida");
         return;
     }
-    else if (birthDate < minDate) {
-        alert("Data non valida: devi avere almeno 1 anno");
+
+    const today = new Date();
+
+    const minDate = new Date("1950-01-01");
+    const maxDate = new Date(today);
+    maxDate.setFullYear(maxDate.getFullYear() - 1);
+
+    if (birthDate < minDate) {
+        alert("Data non valida");
         return;
     }
-    else if (birthDate > maxDate) {
+
+    if (birthDate > maxDate) {
         alert("Data non valida: non posso darti così tanti gratta e vinci");
         return;
     }
-    // calcola età precisa in anni
+
+    // Controllo compleanno + 14 giorni
+    const birthdayThisYear = new Date(
+        today.getFullYear(),
+        birthDate.getMonth(),
+        birthDate.getDate()
+    );
+
+    const diffDays = Math.floor(
+        (today - birthdayThisYear) / (1000 * 60 * 60 * 24)
+    );
+
+    if (diffDays < 0 || diffDays > 14) {
+        alert("Siamo oltre il limite dei regali 🎁");
+        return;
+    }
+
     let calcAge = today.getFullYear() - birthDate.getFullYear();
+
     const m = today.getMonth() - birthDate.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+
+    if (
+        m < 0 ||
+        (m === 0 && today.getDate() < birthDate.getDate())
+    ) {
         calcAge--;
     }
+
     age = calcAge;
 
     audio.loop = true;
@@ -174,7 +187,9 @@ if (diffDays < 0 || diffDays > 14) {
         `Auguri ${capitalize(displayName)}!`;
 
     document.getElementById("info").innerHTML =
-        `<h4>1 Gratta e Vinci per ogni anno compiuto</h4><h4>Ti spettano ${age} tickets</h4><h4>Vincerai qualcosa?</h4>`;
+        `<h4>1 Gratta e Vinci per ogni anno compiuto</h4>
+         <h4>Ti spettano ${age} tickets</h4>
+         <h4>Vincerai qualcosa?</h4>`;
 
     createTickets();
 }
