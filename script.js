@@ -138,8 +138,13 @@ function start() {
         return;
     }
 
-    if (birthDate > maxDate) {
+    if (birthday > today) {
         alert("Hai viaggiato nel tempo? Inserisci una data valida.");
+        return;
+    }
+
+    if (birthDate > maxDate) {
+        alert("Ma sei un bebè! Inserisci una data valida.");
         return;
     }
 
