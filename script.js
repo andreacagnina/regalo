@@ -122,6 +122,35 @@ function start() {
     const maxDate = new Date(today);
     maxDate.setFullYear(maxDate.getFullYear() - 1); // almeno 1 anno
 
+    const birthDate = new Date(yearValue);
+const today = new Date();
+
+if (!displayName || !yearValue) {
+    alert("Inserisci dati richiesti");
+    return;
+}
+
+if (isNaN(birthDate.getTime())) {
+    alert("Data non valida");
+    return;
+}
+
+// Finestra di utilizzo: compleanno + 14 giorni
+const birthdayThisYear = new Date(
+    today.getFullYear(),
+    birthDate.getMonth(),
+    birthDate.getDate()
+);
+
+const diffDays = Math.floor(
+    (today - birthdayThisYear) / (1000 * 60 * 60 * 24)
+);
+
+if (diffDays < 0 || diffDays > 14) {
+    alert("Siamo oltre il limite dei regali 🎁");
+    return;
+}
+    
     if (!displayName || !yearValue) {
         alert("Inserisci dati richiesti");
         return;
@@ -139,14 +168,6 @@ function start() {
         alert("Data non valida: non posso darti così tanti gratta e vinci");
         return;
     }
-
-    if (/^mauro$/i.test(originalName)) {
-        displayName = "Fango di merda";
-    }
-    else if (/^aurora$/i.test(originalName)) {
-        displayName = "Balena 🐳";
-    }
-
     // calcola età precisa in anni
     let calcAge = today.getFullYear() - birthDate.getFullYear();
     const m = today.getMonth() - birthDate.getMonth();
