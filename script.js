@@ -121,9 +121,6 @@ function start() {
     const minDate = new Date('1950-01-01');
     const maxDate = new Date(today);
     maxDate.setFullYear(maxDate.getFullYear() - 1); // almeno 1 anno
-
-    const birthDate = new Date(yearValue);
-
 // Finestra di utilizzo: compleanno + 14 giorni
     const birthdayThisYear = new Date(
     today.getFullYear(),
@@ -282,11 +279,7 @@ function setupScratch(canvas, isWin) {
 
             if (isWin) {
                 const message = document.getElementById("gift-message");
-                if (/^mauro$/i.test(originalName)) {
-                    message.innerText = "Una Gift Card da spendere...";
-                } else if (/^aurora$/i.test(originalName)) {
-                    message.innerText = "Puoi accompagnare un disabile ♿ a vedere...";
-                } else if (/^antonio$/i.test(originalName)) {
+                if (/^antonio$/i.test(originalName)) {
                     message.innerText = "Speriamo sia un regalo gradito";
                 } else {
                     message.innerText = "effettivamente potevamo fare di meglio...";
@@ -361,17 +354,8 @@ function openGift() {
 
 function downloadGift() {
     const a = document.createElement("a");
-    if (/^mauro$/i.test(originalName)) {
-        a.href = "mauro-gift.pdf";
-        a.download = "mauro-gift.pdf";
-        a.click();
-    }
-    else if (/^aurora$/i.test(originalName)) {
-        a.href = "nddp.pdf";
-        a.download = "nddp.pdf";
-        a.click();
-    }
-    else if (/^antonio$/i.test(originalName)) {
+
+    if (/^antonio$/i.test(originalName)) {
         a.href = "antonio-gift.pdf";
         a.download = "antonio-gift.pdf";
         a.click();
