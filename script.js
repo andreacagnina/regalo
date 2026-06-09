@@ -138,7 +138,7 @@ function start() {
         return;
     }
 
-    if (birthday > today) {
+    if (birthDate > today) {
         alert("Hai viaggiato nel tempo? Inserisci una data valida.");
         return;
     }
