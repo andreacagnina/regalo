@@ -154,9 +154,12 @@ function start() {
 
     if (birthdayMonth > currentMonth) {
        alert("Sembra che sia passato troppo tempo dal tuo compleanno. Torna l'anno prossimo, ma nel frattempo goditi questa canzone");
+       audio.volume = 1;
+       audio.muted = false;
+       window.open('https://www.youtube.com/watch?v=sqkzN2Ye_pk&autoplay=1', 'noopener');
+       return;
     } else if (birthdayMonth < currentMonth) {
         alert("Sei un po' in anticipo, torna tra " + Math.abs(m) + " mesi. Intanto goditi quesa canzone");
-    }
         audio.volume = 1;
         audio.muted = false;
         window.open('https://www.youtube.com/watch?v=sqkzN2Ye_pk&autoplay=1', 'noopener');
