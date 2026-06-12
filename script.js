@@ -113,14 +113,14 @@ function drawScratchTexture(ctx, w, h) {
 function start() {
 
     originalName = document.getElementById("name").value.toLowerCase().trim();
-    const yearValue = document.getElementById("year").value;
+    const dateValue = document.getElementById("year").value;
 
-    if (!originalName || !yearValue) {
+    if (!originalName || !dateValue) {
         alert("Inserisci dati richiesti");
         return;
     }
 
-    const birthDate = new Date(yearValue);
+    const birthDate = new Date(dateValue);
 
     if (isNaN(birthDate.getTime())) {
         alert("Data non valida");
@@ -148,28 +148,22 @@ function start() {
         return;
     }
 
-    // Controllo compleanno + 14 giorni
-    const birthdayThisYear = new Date(
-        today.getFullYear(),
-        birthDate.getMonth(),
-        birthDate.getDate()
-    );
+    const birthdayMonth = birthDate.getMonth();
+    const currentMonth = today.getMonth();
+    const m = currentMonth - birthdayMonth;
 
-    const diffDays = Math.floor(
-        (today - birthdayThisYear) / (1000 * 60 * 60 * 24)
-    );
-
-    if (diffDays < 0 || diffDays > 14) {
+    if (birthdayMonth > currentMonth) {
        alert("Sembra che sia passato troppo tempo dal tuo compleanno. Torna l'anno prossimo, ma nel frattempo goditi questa canzone");
+    } else if (birthdayMonth < currentMonth) {
+        alert("Sei un po' in anticipo, torna tra " + Math.abs(m) + " mesi. Intanto goditi questo video"}
+    }
         audio.volume = 1;
         audio.muted = false;
         window.open('https://www.youtube.com/watch?v=sqkzN2Ye_pk&autoplay=1', 'noopener');
         return;
-    }
+    } else {
 
     let calcAge = today.getFullYear() - birthDate.getFullYear();
-
-    const m = today.getMonth() - birthDate.getMonth();
 
     if (
         m < 0 ||
@@ -197,6 +191,7 @@ function start() {
          <h4>Vincerai qualcosa?</h4>`;
 
     createTickets();
+    }
 }
 
 function capitalize(str) {
