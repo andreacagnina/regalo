@@ -155,7 +155,7 @@ function start() {
     if (birthdayMonth > currentMonth) {
        alert("Sembra che sia passato troppo tempo dal tuo compleanno. Torna l'anno prossimo, ma nel frattempo goditi questa canzone");
     } else if (birthdayMonth < currentMonth) {
-        alert("Sei un po' in anticipo, torna tra " + Math.abs(m) + " mesi. Intanto goditi questo video"}
+        alert("Sei un po' in anticipo, torna tra " + Math.abs(m) + " mesi. Intanto goditi quesa canzone");
     }
         audio.volume = 1;
         audio.muted = false;
@@ -165,13 +165,9 @@ function start() {
 
     let calcAge = today.getFullYear() - birthDate.getFullYear();
 
-    if (
-        m < 0 ||
-        (m === 0 && today.getDate() < birthDate.getDate())
-    ) {
-        calcAge--;
+    if (today.getDate() < birthDate.getDate()) {
+    calcAge--;
     }
-
     age = calcAge;
 
     audio.loop = true;
