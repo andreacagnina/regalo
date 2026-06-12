@@ -131,7 +131,7 @@ function start() {
 
     const minDate = new Date("1950-01-01");
     const maxDate = new Date(today);
-    maxDate.setFullYear(maxDate.getFullYear() - 1);
+    maxDate.setFullYear(maxDate.getFullYear() - 8);
 
     if (birthDate < minDate) {
         alert("Troppo vintage per questo 😅");
@@ -144,7 +144,7 @@ function start() {
     }
 
     if (birthDate > maxDate) {
-        alert("Ma sei un bebè! Inserisci una data valida.");
+        alert("Sei troppo piccolo per questo! Riprova tra qualche anno!");
         return;
     }
 
@@ -160,6 +160,7 @@ function start() {
     );
 
     if (diffDays < 0 || diffDays > 14) {
+       alert("Sembra che sia passato troppo tempo dal tuo compleanno. Torna l'anno prossimo, ma nel frattempo goditi questa canzone");
         audio.volume = 1;
         audio.muted = false;
         window.open('https://www.youtube.com/watch?v=sqkzN2Ye_pk&autoplay=1', 'noopener');
