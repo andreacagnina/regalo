@@ -120,13 +120,20 @@ function start() {
 
     originalName = document.getElementById("name").value.toLowerCase().trim();
     const dateValue = document.getElementById("year").value;
+    const birthDate = new Date(dateValue);
+    const birthYear = birtDate.getFullYear();
+    const file = `regalo-${originalName}.pdf`;
+    const message = document.getElementById("gift-message");
+    if (file) {
+        message.innerText =  `La password è: ${birthYear}`;
+    } else {
+        message.innerText = "Buona visione!";
+    }
 
     if (!originalName || !dateValue) {
         alert("Inserisci dati richiesti");
         return;
     }
-
-    const birthDate = new Date(dateValue);
 
     if (isNaN(birthDate.getTime())) {
         alert("Data non valida");
@@ -294,9 +301,7 @@ function setupScratch(canvas, isWin) {
             canvas.style.display = "none";
 
             if (isWin) {
-                const message = document.getElementById("gift-message");
-                message.innerText = "speriamo sia un regalo gradito";
-
+            
                 audio.pause();
                 audio.currentTime = 0;
                 audio.load();
@@ -365,12 +370,14 @@ function openGift() {
     document.getElementById("final").classList.remove("hidden");
 }
 
+    
 async function downloadGift() {
     const file = `regalo-${originalName}.pdf`;
 
     const res = await fetch(file);
 
     if (res.ok) {
+        
         const a = document.createElement("a");
         a.href = file;
         a.download = file;
