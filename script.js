@@ -116,15 +116,16 @@ function openVideo() {
   window.open('https://www.youtube.com/watch?v=sqkzN2Ye_pk&autoplay=1');
 }
 
-function start() {
+async function start() {
 
     originalName = document.getElementById("name").value.toLowerCase().trim();
     const dateValue = document.getElementById("year").value;
     const birthDate = new Date(dateValue);
-    const birthYear = birtDate.getFullYear();
+    const birthYear = birthDate.getFullYear();
     const file = `regalo-${originalName}.pdf`;
+    const res = await fetch(file);
     const message = document.getElementById("gift-message");
-    if (file) {
+    if (res.ok) {
         message.innerText =  `La password è: ${birthYear}`;
     } else {
         message.innerText = "Buona visione!";
@@ -175,7 +176,7 @@ function start() {
         return;
     } 
 
-    let calcAge = today.getFullYear() - birthDate.getFullYear();
+    let calcAge = today.getFullYear() - birthYear;
 
     if (today.getDate() < birthDate.getDate()) {
     calcAge--;
