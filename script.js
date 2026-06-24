@@ -122,7 +122,7 @@ async function start() {
     const dateValue = document.getElementById("year").value;
     const birthDate = new Date(dateValue);
     const birthYear = birthDate.getFullYear();
-    const birthMonth = birthDate.getMonth();
+    const birthMonth = birthDate.getMonth() + 1;
     const birthDay = birthDate.getDate();
     const file = `regalo-${originalName}.pdf`;
     const res = await fetch(file);
