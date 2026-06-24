@@ -371,6 +371,11 @@ function setupScratch(canvas, isWin) {
 function openGift() {
     document.getElementById("win").classList.add("hidden");
     document.getElementById("final").classList.remove("hidden");
+    setTimeout(() => {
+    document.getElementById("show-gift").disabled = false;
+}, 3000);
+
+
 }
 
     
