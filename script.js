@@ -122,11 +122,13 @@ async function start() {
     const dateValue = document.getElementById("year").value;
     const birthDate = new Date(dateValue);
     const birthYear = birthDate.getFullYear();
+    const birthMonth = birthDate.getMonth();
+    const birthDay = birthDate.getDate();
     const file = `regalo-${originalName}.pdf`;
     const res = await fetch(file);
     const message = document.getElementById("gift-message");
     if (res.ok) {
-        message.innerText =  `La password è: ${birthYear}`;
+        message.innerText =  `La password è:\n ${birthDay}-${birthMonth}`;
     } else {
         message.innerText = "Buona visione!";
     }
