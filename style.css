@@ -135,3 +135,17 @@
             max-width: 400px;
             width: 100%;
         }
+
+#gift-message {
+    animation: apparizione 2s ease-in-out forwards;
+}
+
+@keyframes apparizione {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
