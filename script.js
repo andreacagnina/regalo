@@ -169,11 +169,11 @@ async function start() {
     const m = currentMonth - birthdayMonth;
 
     if (birthdayMonth > currentMonth) {
-       alert("Sembra che sia passato troppo tempo dal tuo compleanno. Torna l'anno prossimo, ma nel frattempo goditi questa canzone");
+       alert("Sei un po' in anticipo, torna tra " + Math.abs(m) + " mesi. Intanto goditi questa canzone");
        openVideo();
        return;
     } else if (birthdayMonth < currentMonth) {
-        alert("Sei un po' in anticipo, torna tra " + Math.abs(m) + " mesi. Intanto goditi questa canzone");
+        alert("Sembra che sia passato troppo tempo dal tuo compleanno. Torna l'anno prossimo, ma nel frattempo goditi questa canzone");
         openVideo();
         return;
     } 
